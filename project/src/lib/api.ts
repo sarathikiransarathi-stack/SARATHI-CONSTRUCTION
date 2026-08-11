@@ -2,9 +2,9 @@ import emailjs from '@emailjs/browser';
 import { supabase } from '@/lib/supabase';
 import type { Enquiry, EnquiryStatus, Project, Service } from '@/types';
 
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 
 export async function getProjects(featured = false) {
   let query = supabase.from('projects').select('*').order('created_at', { ascending: false });
@@ -33,19 +33,6 @@ export async function getEnquiries() {
 }
 
 export async function createEnquiry(values: Record<string, string>) {
-  const { error } = await supabase.from('enquiries').insert({
-    name: values.name,
-    email: values.email,
-    phone: values.phone,
-    project_type: values.projectType,
-    location: values.location || null,
-    budget: values.budget || null,
-    preferred_start_date: values.preferredStartDate || null,
-    message: values.message,
-    status: 'New',
-  });
-  if (error) throw new Error('Could not save enquiry.');
-
   await emailjs.send(
     EMAILJS_SERVICE_ID,
     EMAILJS_TEMPLATE_ID,
@@ -58,9 +45,23 @@ export async function createEnquiry(values: Record<string, string>) {
       budget: values.budget || '—',
       preferred_start_date: values.preferredStartDate || '—',
       message: values.message,
+      to_email: 'sarathiassociate.123@gmail.com',
     },
     EMAILJS_PUBLIC_KEY
   );
+
+  // Best-effort DB save — does not block success
+  supabase.from('enquiries').insert({
+    name: values.name,
+    email: values.email,
+    phone: values.phone,
+    project_type: values.projectType,
+    location: values.location || null,
+    budget: values.budget || null,
+    preferred_start_date: values.preferredStartDate || null,
+    message: values.message,
+    status: 'New',
+  }).then(({ error }) => { if (error) console.warn('DB save failed:', error.message); });
 }
 
 export async function updateEnquiryStatus(id: string, status: EnquiryStatus) {
@@ -74,7 +75,9 @@ export async function deleteEnquiry(id: string) {
 }
 
 export async function saveProject(project: Partial<Project>, id?: string) {
-  const { error } = id ? await supabase.from('projects').update(project).eq('id', id) : await supabase.from('projects').insert(project);
+  const { error } = id
+    ? await supabase.from('projects').update(project).eq('id', id)
+    : await supabase.from('projects').insert(project);
   if (error) throw error;
 }
 
@@ -84,7 +87,9 @@ export async function deleteProject(id: string) {
 }
 
 export async function saveService(service: Partial<Service>, id?: string) {
-  const { error } = id ? await supabase.from('services').update(service).eq('id', id) : await supabase.from('services').insert(service);
+  const { error } = id
+    ? await supabase.from('services').update(service).eq('id', id)
+    : await supabase.from('services').insert(service);
   if (error) throw error;
 }
 

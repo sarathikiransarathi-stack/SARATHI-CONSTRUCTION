@@ -31,7 +31,7 @@ INSERT INTO projects (title, category, location, description, image, gallery, st
 (
   'Sarathi Heights Residence',
   'Residential',
-  'Pune, Maharashtra',
+  'Tiruppur, Tamil Nadu',
   'A contemporary multi-storey residence designed for a growing family, balancing privacy with open, light-filled living spaces. The structure combines exposed concrete, warm timber accents and floor-to-ceiling glazing.',
   'https://images.pexels.com/photos/7031406/pexels-photo-7031406.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   ARRAY[
@@ -48,7 +48,7 @@ INSERT INTO projects (title, category, location, description, image, gallery, st
 (
   'Sarathi Business Centre',
   'Commercial',
-  'Mumbai, Maharashtra',
+  'Coimbatore, Tamil Nadu',
   'A modern commercial office complex built for performance and efficiency, with flexible floor plates, a double-height entrance lobby and integrated MEP systems for a future-ready workplace.',
   'https://images.pexels.com/photos/1603369/pexels-photo-1603369.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   ARRAY[
@@ -65,7 +65,7 @@ INSERT INTO projects (title, category, location, description, image, gallery, st
 (
   'Modern Villa Project',
   'Residential',
-  'Lonavala, Maharashtra',
+  'Erode, Tamil Nadu',
   'A hillside luxury villa with panoramic glazing, an infinity pool and seamless indoor-outdoor flow — engineered for weekend living and year-round comfort.',
   'https://images.pexels.com/photos/8082328/pexels-photo-8082328.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   ARRAY[
@@ -82,7 +82,7 @@ INSERT INTO projects (title, category, location, description, image, gallery, st
 (
   'Industrial Warehouse Project',
   'Industrial',
-  'Nashik, Maharashtra',
+  'Coimbatore, Tamil Nadu',
   'A large-span industrial warehouse with high-clearance storage, dedicated loading bays and fire-safety compliant steel structure, built for logistics operations at scale.',
   'https://images.pexels.com/photos/236709/pexels-photo-236709.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   ARRAY[
@@ -99,7 +99,7 @@ INSERT INTO projects (title, category, location, description, image, gallery, st
 (
   'Contemporary Residence',
   'Renovation',
-  'Bengaluru, Karnataka',
+  'Tiruppur, Tamil Nadu',
   'A complete renovation of an existing residence — reimagined layout, modernised services, new finishes and a refreshed facade that doubled the usable natural light.',
   'https://images.pexels.com/photos/7031412/pexels-photo-7031412.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   ARRAY[
@@ -116,7 +116,7 @@ INSERT INTO projects (title, category, location, description, image, gallery, st
 (
   'Commercial Office Complex',
   'Commercial',
-  'Hyderabad, Telangana',
+  'Coimbatore, Tamil Nadu',
   'A multi-tower commercial office complex with shared podium, central plaza and integrated parking — designed for mixed tenant use and future expansion.',
   'https://images.pexels.com/photos/417279/pexels-photo-417279.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   ARRAY[

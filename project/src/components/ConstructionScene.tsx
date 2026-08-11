@@ -207,6 +207,7 @@ export default function ConstructionScene({ children }: { children: ReactNode })
     hook.position.set(7, -4, 0);
     jibGroup.add(hook);
     craneGroup.add(jibGroup);
+    craneGroup.position.set(BW / 2 + 1.5, 0, -BD / 2 + 1);
     scene.add(craneGroup);
 
     // Scaffolding on active floor
